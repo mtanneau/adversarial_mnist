@@ -1,0 +1,35 @@
+
+<header class="st-module" style="padding-left:20px;padding-top:20px;padding-bottom:20px">
+    <h1 style="border-bottom:0px">MNIST image recognition</h1>
+</header>
+
+<div class="row">
+    <h4>Click the button to start training!</h4><br>
+    <q-btn color="grey" style="margin-top:10px;margin-bottom:10px;margin-right:10px;margin-left: 20px;" v-on:click="train = !train" :loading="training"
+text-color="black" label="TRAIN" disable="true"></q-btn><br>
+    <h4></h4>
+</div>
+<div class="row">
+    <div class="st-col col-12 col-sm st-module">
+        <plotly :data="traces" :layout="layout"></plotly>
+    </div>
+</div>
+<!-- Adversarial examples -->
+<div class="row">
+    <!-- <h4>Click to select a new image</h4> -->
+    <div class="st-col col-12 col-sm st-module">
+        <q-btn color="grey" style="margin-top:10px;margin-bottom:10px;margin-right:10px;margin-left:20px;" v-on:click="sample_img = !sample_img" text-color="black" label="New image" disable="true"></q-btn><br>
+        <h4>Noise Level</h4><br>
+        <q-slider :min="0" v-model="noise_level" label="" :max="1000" :step="1"></q-slider><br>
+    </div>
+</div>
+<div class="row">
+    <div class="st-col col-12 col-sm st-module">
+        <!-- Original image -->
+        <plotly :data="tr_img_raw" :layout="layout_img_raw"></plotly>
+    </div>
+    <div class="st-col col-12 col-sm st-module">
+        <!-- Adversarial image -->
+        <plotly :data="tr_img_adv" :layout="layout_img_adv"></plotly>
+    </div>
+</div>
